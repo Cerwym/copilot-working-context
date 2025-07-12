@@ -22,6 +22,11 @@
 
 ##  **Technical Preferences**
 - **C# .NET**: Prefer nullable reference types, clean architecture
+- **Node.js & TypeScript**: ESBuild for fast compilation, semantic-release for automated versioning
+- **Build systems**: ESBuild for bundling, npm scripts for workflow automation
+- **Package management**: npm with comprehensive dev dependencies and strict type checking
+- **Release automation**: semantic-release with conventional commits and automated marketplace publishing
+- **Code quality**: ESLint with TypeScript integration, pre-commit validation
 - **Platform abstractions**: Write portable code that avoids platform lock-in
 - **Cross-platform compatibility**: Ensure code works on Windows, macOS, and Linux
 - **Line endings**: Unix-style (LF) with Git autocrlf=input to prevent cross-platform issues

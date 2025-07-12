@@ -12,6 +12,19 @@ Create a new .NET 8.0 console application with:
 - Cross-platform compatibility
 \\\
 
+### For new Node.js/TypeScript projects:
+\\\
+Please read my working context at: https://github.com/Cerwym/copilot-working-context
+Create a new Node.js TypeScript project with:
+- ESBuild for fast compilation and bundling
+- TypeScript strict mode configuration
+- semantic-release for automated versioning
+- ESLint with TypeScript integration
+- npm scripts for build automation
+- Cross-platform compatibility
+- Comprehensive testing setup
+\\\
+
 ### For existing project analysis:
 \\\
 Please read my working context at: https://github.com/Cerwym/copilot-working-context
@@ -92,7 +105,41 @@ dotnet run -- complete --issue-key PROJ-12345 --target "Done" --non-interactive
    - Reference Jira story in PR/commit if applicable
 \\\
 
+##  **Node.js/TypeScript Development Workflow**
+\\\
+For Node.js/TypeScript projects, follow this enhanced workflow:
+
+1. **Project Setup**:
+   - Initialize with `npm init` and TypeScript configuration
+   - Set up ESBuild for compilation and bundling
+   - Configure semantic-release for automated versioning
+   - Add ESLint with TypeScript integration
+
+2. **Development Scripts**:
+   ```bash
+   npm run watch          # Start development with live reload
+   npm run check-types    # Type checking without compilation
+   npm run lint          # Code quality checks
+   npm run test          # Run test suite
+   npm run package       # Production build
+   ```
+
+3. **Release Management**:
+   - Use conventional commit messages (feat:, fix:, docs:, etc.)
+   - Automated versioning via semantic-release
+   - Cross-platform testing in CI/CD
+   - Automated publishing to relevant registries
+
+4. **Quality Gates**:
+   - All TypeScript types must be valid
+   - ESLint rules must pass
+   - Comprehensive test coverage required
+   - Cross-platform compatibility verified
+\\\
+
 ##  **Test Structure Template**
+
+### C# Test Structure:
 \\\csharp
 [Fact]
 public void MethodName_WhenCondition_ShouldExpectedOutcome()
@@ -107,6 +154,121 @@ public void MethodName_WhenCondition_ShouldExpectedOutcome()
     // Assert
     Assert.NotNull(result);
     mockDependency.Verify(x => x.ExpectedCall(), Times.Once);
+}
+\\\
+
+### TypeScript/Node.js Test Structure:
+\\\typescript
+describe('ServiceName', () => {
+    let service: ServiceName;
+    let mockDependency: jest.Mocked<DependencyInterface>;
+
+    beforeEach(() => {
+        mockDependency = {
+            methodName: jest.fn()
+        } as jest.Mocked<DependencyInterface>;
+
+        service = new ServiceName(mockDependency);
+    });
+
+    test('methodName_whenCondition_shouldExpectedOutcome', async () => {
+        // Arrange
+        const expectedResult = 'expected';
+        mockDependency.methodName.mockResolvedValue(expectedResult);
+
+        // Act
+        const result = await service.methodName();
+
+        // Assert
+        expect(result).toBe(expectedResult);
+        expect(mockDependency.methodName).toHaveBeenCalledWith();
+    });
+});
+\\\
+
+##  **Project Structure Templates**
+
+### VS Code Extension Structure:
+\\\
+extension-name/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml
+│       └── release.yml
+├── .vscode/
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   └── tasks.json
+├── src/
+│   ├── commands/
+│   ├── services/
+│   ├── types/
+│   ├── test/
+│   └── extension.ts
+├── sounds/
+│   └── *.mp3
+├── .releaserc.json
+├── esbuild.js
+├── eslint.config.mjs
+├── package.json
+├── package.nls.json
+├── package.nls.*.json
+├── README.md
+└── tsconfig.json
+\\\
+
+### Node.js/TypeScript Library Structure:
+\\\
+library-name/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml
+│       └── release.yml
+├── src/
+│   ├── types/
+│   ├── services/
+│   ├── utils/
+│   ├── test/
+│   └── index.ts
+├── dist/
+├── .releaserc.json
+├── esbuild.js
+├── eslint.config.mjs
+├── jest.config.js
+├── package.json
+├── README.md
+└── tsconfig.json
+\\\
+
+##  **Semantic Release Configuration Template**
+\\\json
+{
+  "branches": ["main"],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits"
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits"
+      }
+    ],
+    "@semantic-release/changelog",
+    "@semantic-release/npm",
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["CHANGELOG.md", "package.json", "package-lock.json"],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}"
+      }
+    ],
+    "@semantic-release/github"
+  ]
 }
 \\\
 
