@@ -24,6 +24,7 @@
 - **C# .NET**: Prefer nullable reference types, clean architecture
 - **Platform abstractions**: Write portable code that avoids platform lock-in
 - **Cross-platform compatibility**: Ensure code works on Windows, macOS, and Linux
+- **Line endings**: Unix-style (LF) with Git autocrlf=input to prevent cross-platform issues
 - **Abstraction layers**: Use interfaces and dependency injection for platform-specific features
 - **Error handling**: Comprehensive error scenarios with logging
 - **Performance**: Always consider performance implications
