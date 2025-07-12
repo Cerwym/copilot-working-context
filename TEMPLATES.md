@@ -34,6 +34,46 @@ feat(area): Brief description of change
 Addresses #issue-number
 \\\
 
+##  **Branch Naming Convention**
+\\\
+Before starting work, create appropriately prefixed branches:
+- **feature/**: New features or enhancements
+- **bugfix/**: Bug fixes and corrections
+- **misc/**: Miscellaneous work, refactoring, documentation
+
+Branch names should reference Jira story when applicable:
+- feature/PROJ-123-implement-user-authentication
+- bugfix/PROJ-456-fix-memory-leak
+- misc/update-documentation
+
+**Note**: This rule can be relaxed for personal/non-company work
+\\\
+
+##  **Development Workflow Template**
+\\\
+When starting new development work:
+
+1. **Check for Jira Story**:
+   - Is this company work? If yes, ensure Jira story exists
+   - If no Jira story exists, offer to create one using JiraTools application
+   - For personal projects, Jira requirement can be waived
+
+2. **Create Branch**:
+   - Use appropriate prefix: feature/, bugfix/, or misc/
+   - Include Jira ID if applicable: feature/PROJ-123-description
+   - For personal work: feature/descriptive-name
+
+3. **Development Process**:
+   - Follow clean architecture principles
+   - Maintain comprehensive test coverage
+   - Use detailed commit messages with impact metrics
+
+4. **Integration**:
+   - Ensure all tests pass
+   - Update documentation as needed
+   - Reference Jira story in PR/commit if applicable
+\\\
+
 ##  **Test Structure Template**
 \\\csharp
 [Fact]
@@ -42,10 +82,10 @@ public void MethodName_WhenCondition_ShouldExpectedOutcome()
     // Arrange
     var mockDependency = new Mock<IDependency>();
     var sut = new SystemUnderTest(mockDependency.Object);
-    
+
     // Act
     var result = sut.MethodToTest();
-    
+
     // Assert
     Assert.NotNull(result);
     mockDependency.Verify(x => x.ExpectedCall(), Times.Once);
@@ -63,10 +103,10 @@ public interface IConfigurationProvider<T>
 public class InMemoryConfigurationProvider<T> : IConfigurationProvider<T>
 {
     private T? _configuration;
-    
+
     public Task<T> GetConfigurationAsync()
         => Task.FromResult(_configuration ?? throw new InvalidOperationException());
-        
+
     public Task SaveConfigurationAsync(T configuration)
     {
         _configuration = configuration;
