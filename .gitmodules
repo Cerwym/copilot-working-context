@@ -1,3 +1,6 @@
 [submodule "vs-code-extensions"]
 	path = vs-code-extensions
 	url = https://github.com/Cerwym/copilot-audio-notifications.git
+[submodule "jira-tools"]
+	path = jira-tools
+	url = https://github.com/Cerwym/copilot-jiratools.git

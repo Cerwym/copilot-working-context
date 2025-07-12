@@ -28,28 +28,42 @@ graph TB
         L[🔨 dist/<br/>Build Artifacts]
     end
 
+    subgraph "Submodule: jira-tools"
+        M[⚙️ JiraTools.csproj<br/>C# Project Configuration]
+        N[💼 src/<br/>CLI Application Code]
+        O[📋 .env<br/>Jira Credentials & Config]
+        P[🧪 tests/<br/>Unit Tests]
+        Q[📖 USAGE_GUIDE.md<br/>Command Documentation]
+        R[🚀 bin/<br/>Compiled CLI Tool]
+    end
+
     subgraph "Development Workflows"
-        M[👥 Context Contributors<br/>Update preferences & docs]
-        N[🔧 Extension Developers<br/>Build & test extensions]
+        S[👥 Context Contributors<br/>Update preferences & docs]
+        T[🔧 Extension Developers<br/>Build & test extensions]
+        U[⚡ Workflow Automation<br/>Use CLI for Jira management]
     end
 
     subgraph "Benefits"
-        O[🚀 Fast Cloning<br/>Lightweight main repo]
-        P[🔄 Independent Updates<br/>Separate release cycles]
-        Q[♻️ Reusable Extensions<br/>Share across projects]
-        R[🧹 Clean History<br/>Focused commit logs]
+        V[🚀 Fast Cloning<br/>Lightweight main repo]
+        W[🔄 Independent Updates<br/>Separate release cycles]
+        X[♻️ Reusable Tools<br/>Share across projects]
+        Y[🧹 Clean History<br/>Focused commit logs]
     end
 
     F -.->|references specific commit| G
-    M -->|works on| A
-    M -->|works on| E
-    N -->|works on| G
-    N -->|works on| H
+    F -.->|references specific commit| M
+    S -->|works on| A
+    S -->|works on| E
+    T -->|works on| G
+    T -->|works on| H
+    U -->|uses| N
+    U -->|configures| O
 
-    A --> O
-    F --> P
-    G --> Q
-    M --> R
+    A --> V
+    F --> W
+    G --> X
+    M --> X
+    S --> Y
 
     style A fill:#e1f5fe
     style E fill:#e1f5fe
@@ -95,10 +109,16 @@ When developing VS Code extensions alongside context documentation, several issu
 - Clean commit history focused on preference evolution
 
 **Submodule Repository (vs-code-extensions):**
-- Contains implementation code, build systems, and dependencies
+- Contains VS Code extension implementation code, build systems, and dependencies
 - Focused entirely on extension functionality and testing
 - Can be developed, tested, and deployed independently
 - Has its own release cycle and versioning
+
+**Submodule Repository (jira-tools):**
+- Contains CLI workflow automation tools for Jira integration
+- Focused on development workflow assistance and story management
+- Can be updated and deployed independently
+- Provides consistent workflow automation across different projects
 
 ### **Independent Development Workflows**
 

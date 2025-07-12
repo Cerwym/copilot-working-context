@@ -26,6 +26,7 @@
 - **Cross-platform compatibility**: Ensure code works on Windows, macOS, and Linux
 - **Line endings**: Unix-style (LF) with Git autocrlf=input to prevent cross-platform issues
 - **Documentation**: Mermaid diagrams for visual architecture representation
+- **JiraTools integration**: Use custom JiraTools CLI for workflow automation and story management
 - **Abstraction layers**: Use interfaces and dependency injection for platform-specific features
 - **Error handling**: Comprehensive error scenarios with logging
 - **Performance**: Always consider performance implications
@@ -38,11 +39,12 @@
 - **Documentation**: Inline XML docs for public APIs
 
 ##  **Repository Architecture**
-- **Modular separation**: Use Git submodules to separate context documentation from implementation
-- **Independent versioning**: Core preferences (this repo) vs. extension implementations (submodules)
+- **Modular separation**: Use Git submodules to separate context documentation from implementations
+- **Independent versioning**: Core preferences (this repo) vs. tool implementations (submodules)
 - **Clean boundaries**: Context definitions remain stable while implementations evolve independently
-- **Reusable components**: Extensions can be shared across different context repositories
-- **Development workflow**: Update context preferences here, develop/test extensions in their own repos
+- **Reusable components**: Tools can be shared across different context repositories
+- **Development workflow**: Update context preferences here, develop/test tools in their own repos
+- **Multi-tool support**: VS Code extensions (vs-code-extensions/) and CLI tools (jira-tools/)
 
 ---
 *Last updated: July 12, 2025*

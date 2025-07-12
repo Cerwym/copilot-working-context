@@ -58,6 +58,24 @@ When starting new development work:
    - If no Jira story exists, offer to create one using JiraTools application
    - For personal projects, Jira requirement can be waived
 
+**JiraTools Commands:**
+```bash
+# Navigate to JiraTools submodule directory
+cd jira-tools
+
+# Create a new task
+dotnet run -- create-task --summary "Task title" --description "Detailed description" --type "Task" --components "ComponentName"
+
+# Create task linked to parent (uses default parent from .env)
+dotnet run -- create-task --summary "Task title" --description "Description" --parent
+
+# Check task status and available transitions
+dotnet run -- workflow-help --issue-key PROJ-12345
+
+# Transition task through complete workflow
+dotnet run -- complete --issue-key PROJ-12345 --target "Done" --non-interactive
+```
+
 2. **Create Branch**:
    - Use appropriate prefix: feature/, bugfix/, or misc/
    - Include Jira ID if applicable: feature/PROJ-123-description
