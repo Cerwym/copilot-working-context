@@ -25,6 +25,7 @@
 - **Platform abstractions**: Write portable code that avoids platform lock-in
 - **Cross-platform compatibility**: Ensure code works on Windows, macOS, and Linux
 - **Line endings**: Unix-style (LF) with Git autocrlf=input to prevent cross-platform issues
+- **Documentation**: Mermaid diagrams for visual architecture representation
 - **Abstraction layers**: Use interfaces and dependency injection for platform-specific features
 - **Error handling**: Comprehensive error scenarios with logging
 - **Performance**: Always consider performance implications
@@ -35,6 +36,13 @@
 - **Commands**: Dependency injection with interfaces
 - **Testing**: Organized by logical areas (Commands/, Core/, etc.)
 - **Documentation**: Inline XML docs for public APIs
+
+##  **Repository Architecture**
+- **Modular separation**: Use Git submodules to separate context documentation from implementation
+- **Independent versioning**: Core preferences (this repo) vs. extension implementations (submodules)
+- **Clean boundaries**: Context definitions remain stable while implementations evolve independently
+- **Reusable components**: Extensions can be shared across different context repositories
+- **Development workflow**: Update context preferences here, develop/test extensions in their own repos
 
 ---
 *Last updated: July 12, 2025*
